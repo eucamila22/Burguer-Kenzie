@@ -113,6 +113,11 @@ export const DivFormRegister = styled.div`
       flex-direction: column;
    }
 
+   form > p {
+      color: var(--navigate);
+      font-size: var(--font-size5);
+   }
+
    form fieldset {
       border: none;
       padding: 15px 0;

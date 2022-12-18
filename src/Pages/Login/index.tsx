@@ -34,7 +34,6 @@ const LoginPage = () => {
 
    const submit: SubmitHandler<iLoginFormValues> = async (data) => {
       const response = { ...data }
-      console.log(response)
       userLogin(response)
       reset()
    }
@@ -70,8 +69,9 @@ const LoginPage = () => {
                   placeholder='Digite seu e-mail...'
                   register={register('email')}
                   disabled={loading}
-                  error={errors}
                />
+               {errors.email && <p>{errors.email.message}</p>}
+
                <Input
                   label='Senha'
                   id='password'
@@ -80,6 +80,8 @@ const LoginPage = () => {
                   register={register('password')}
                   disabled={loading}
                />
+               {errors.password && <p>{errors.password.message}</p>}
+
                <button className='btnLogin heading3' type='submit'>
                   {loading ? 'Entrando...' : 'Entrar'}
                </button>

@@ -1,6 +1,5 @@
 import React from 'react'
 import { UseFormRegisterReturn } from 'react-hook-form'
-import { FieldErrorsImpl } from 'react-hook-form/dist/types'
 
 interface iInputProps {
    type: 'text' | 'email' | 'password' | 'number'
@@ -8,8 +7,7 @@ interface iInputProps {
    label: string
    placeholder: string
    register: UseFormRegisterReturn
-   error?: FieldErrorsImpl
-   disabled: boolean
+     disabled: boolean
 }
 
 const Input = ({
@@ -18,7 +16,6 @@ const Input = ({
    label,
    placeholder,
    register,
-   error,
    disabled,
 }: iInputProps) => {
    return (
@@ -31,7 +28,7 @@ const Input = ({
             {...register}
             disabled={disabled}
          />
-         {/* {error && <p>{error.message}</p>} */}
+   
       </fieldset>
    )
 }

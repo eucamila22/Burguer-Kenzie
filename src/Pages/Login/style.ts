@@ -173,6 +173,10 @@ export const DivFormLogin = styled.div`
       flex-direction: column;
    }
 
+   form > p {
+      color: var(--navigate);
+   }
+
    form fieldset {
       border: none;
       padding: 15px 0;

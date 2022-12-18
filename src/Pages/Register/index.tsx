@@ -78,6 +78,7 @@ const RegisterPage = () => {
                   register={register('name')}
                   disabled={loading}
                />
+                 {errors.name && <p>{errors.name.message}</p>}
                <Input
                   label='E-mail'
                   id='email'
@@ -85,8 +86,8 @@ const RegisterPage = () => {
                   placeholder='Digite seu e-mail...'
                   register={register('email')}
                   disabled={loading}
-
                />
+                 {errors.email && <p>{errors.email.message}</p>}
                <Input
                   label='Senha'
                   id='password'
@@ -94,17 +95,18 @@ const RegisterPage = () => {
                   placeholder='Digite sua senha...'
                   register={register('password')}
                   disabled={loading}
-
                />
+                 {errors.password && <p>{errors.password.message}</p>}
                <Input
                   label='Confirmar Senha'
                   id='confirmPassword'
                   type='password'
                   placeholder='Confirme sua senha...'
-                  register={register('password')}
+                  register={register('confirmPassword')}
                   disabled={loading}
-
                />
+                 {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
+
                <button type='submit' disabled={loading}>
                   {loading ? 'Cadastrando...' : 'Cadastrar'}
                </button>

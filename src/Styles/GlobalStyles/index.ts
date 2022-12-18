@@ -25,6 +25,7 @@ export const GlobalStyle = createGlobalStyle`
         --weigth2: 500;
         --weigth3: 400;
         --weigth4: 900;
+        --weigth5: 700;
 
         --font-size1: 26px;
         --font-size2: 22px;

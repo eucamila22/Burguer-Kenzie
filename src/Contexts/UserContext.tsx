@@ -31,7 +31,6 @@ interface iUserContext {
 export const UserContext = createContext({} as iUserContext)
 
 export const UserProvider = ({ children }: iProviderProps) => {
-   // const [globalLoading, setGlobalLoading] = useState(false)
    const [loading, setLoading] = useState(false)
 
    const [user, setUser] = useState<iUSerResponse | null>(null)
@@ -44,7 +43,6 @@ export const UserProvider = ({ children }: iProviderProps) => {
          const response = await api.post<iUSerResponse>('login', data)
          setUser(response.data)
          localStorage.setItem('@TOKEN', response.data.accessToken)
-         console.log(response)
          toast.success('Login realizado com sucesso!')
          setTimeout(() => {
             navigate('/home')
@@ -74,7 +72,7 @@ export const UserProvider = ({ children }: iProviderProps) => {
       } catch (error) {
          const currentError = error as AxiosError<iRequestError>
          console.log(error)
-         toast.error(currentError.config?.data)
+         toast.error(currentError.message)
       } finally {
          setLoading(false)
       }

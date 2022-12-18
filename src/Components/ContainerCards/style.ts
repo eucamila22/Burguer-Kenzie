@@ -36,5 +36,5 @@ export const ContainerCardsStyle = styled.ul`
          flex-wrap: wrap;
          justify-content: space-between;
       }
-}
+   }
 `
