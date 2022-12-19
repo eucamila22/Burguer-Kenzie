@@ -7,7 +7,7 @@ interface iInputProps {
    label: string
    placeholder: string
    register: UseFormRegisterReturn
-     disabled: boolean
+   disabled: boolean
 }
 
 const Input = ({
@@ -28,7 +28,6 @@ const Input = ({
             {...register}
             disabled={disabled}
          />
-   
       </fieldset>
    )
 }

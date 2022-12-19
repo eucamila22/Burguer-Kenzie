@@ -9,6 +9,8 @@ export const CardStyle = styled.li`
    border-radius: 5px;
    cursor: pointer;
 
+   margin: 0 19px;
+
    :hover {
       border: 2px solid var(--primary);
    }
@@ -30,7 +32,6 @@ export const CardStyle = styled.li`
 
    .name{
       color: var(--gray-600);
-
    }
 
    .category{
@@ -58,6 +59,5 @@ export const CardStyle = styled.li`
    .btn-add:hover{
       background: var(--primary);
       border: 2px solid var(--primary);
-
    }
 `

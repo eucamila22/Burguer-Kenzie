@@ -19,29 +19,29 @@ interface iCartProducts {
 }
 
 interface iCartContextProps {
-   modalHandle: () => void
-   modalIsOpen: boolean
-   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
-   products: iProducts[]
-   cart: iCartProducts[]
-   addToCart: (element: iCartProducts) => void
-   removeAll: () => void
-   removeCard: (id: iCartProducts) => void
    searchProds: string
-   setSearchProds: React.Dispatch<React.SetStateAction<string>>
+   modalIsOpen: boolean
+   cart: iCartProducts[]
+   products: iProducts[]
    showProducts: iProducts[]
+   removeAll: () => void
+   modalHandle: () => void
+   removeCard: (id: iCartProducts) => void
+   addToCart: (element: iCartProducts) => void
+   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+   setSearchProds: React.Dispatch<React.SetStateAction<string>>
 }
 
 export const CartContext = createContext({} as iCartContextProps)
 
 export const CartProvider = ({ children }: iProviderProps) => {
-   const [products, setProducts] = useState([] as iProducts[])
    const [modalIsOpen, setIsOpen] = useState(false)
-   const [cart, setCart] = useState([] as iCartProducts[])
    const [searchProds, setSearchProds] = useState('')
+   const [cart, setCart] = useState([] as iCartProducts[])
+   const [products, setProducts] = useState([] as iProducts[])
 
    useEffect(() => {
-      async function getAllProducts() {
+      const getAllProducts = async () => {
          const token = localStorage.getItem('@TOKEN')
          if (token) {
             try {
@@ -50,7 +50,6 @@ export const CartProvider = ({ children }: iProviderProps) => {
                setProducts(data)
             } catch (error) {
                console.log(error)
-            } finally {
             }
          }
       }
@@ -65,7 +64,7 @@ export const CartProvider = ({ children }: iProviderProps) => {
       }
    }
 
-   function addToCart(element: iCartProducts) {
+   const addToCart = (element: iCartProducts) => {
       const getAddProducts = products.find((elem) => elem.id === element.id)
       const noRepeatAddProducts = cart.some(
          (elem) => elem.id === getAddProducts?.id
@@ -88,38 +87,38 @@ export const CartProvider = ({ children }: iProviderProps) => {
       }, 2000)
    }
 
-   function removeCard(id: iCartProducts) {
+   const removeCard = (id: iCartProducts) => {
       const removeAddProdcts = cart.filter((elem) => elem !== id)
       setCart(removeAddProdcts)
       toast.info('Produto removido com sucesso!')
    }
 
    const showProducts = !searchProds
-    ? products
-    : products.filter(
-        (element) =>
-          element.name
-            .toLowerCase()
-            .includes(searchProds.toLocaleLowerCase()) ||
-          element.category
-            .toLowerCase()
-            .includes(searchProds.toLocaleLowerCase())
-      );
+      ? products
+      : products.filter(
+           (element) =>
+              element.name
+                 .toLowerCase()
+                 .includes(searchProds.toLocaleLowerCase()) ||
+              element.category
+                 .toLowerCase()
+                 .includes(searchProds.toLocaleLowerCase())
+        )
 
    return (
       <CartContext.Provider
          value={{
-            showProducts,
-            searchProds,
-            setSearchProds,
-            removeCard,
-            removeAll,
-            addToCart,
             cart,
-            modalHandle,
             products,
             modalIsOpen,
+            searchProds,
+            showProducts,
+            removeAll,
+            addToCart,
             setIsOpen,
+            removeCard,
+            modalHandle,
+            setSearchProds,
          }}
       >
          {children}

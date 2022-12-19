@@ -36,12 +36,18 @@ export const CreateModal = () => {
 
             {cart.length !== 0 && (
                <div className='total'>
-                  <p>Total</p>
-                  <p>
-                     R${' '}
-                     {cart?.reduce((acc, act) => acc + act.price, 0).toFixed(2)}
-                  </p>
-                  <button onClick={() => removeAll()}>Remover Todos</button>
+                  <div>
+                     <p className='heading3'>Total</p>
+                     <p className='heading3'>
+                        R${' '}
+                        {cart
+                           ?.reduce((acc, act) => acc + act.price, 0)
+                           .toFixed(2)}
+                     </p>
+                  </div>
+                  <button className='btnRemoveAll' onClick={() => removeAll()}>
+                     Remover Todos
+                  </button>
                </div>
             )}
          </Modal>

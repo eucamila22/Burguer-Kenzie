@@ -17,25 +17,23 @@ interface iUSerResponse {
 }
 
 interface iUserContext {
+   loading: boolean
    user: iUSerResponse | null
+   userLogin: (data: iLoginFormValues) => void
+   setLoading: React.Dispatch<React.SetStateAction<boolean>>
    setUser: React.Dispatch<React.SetStateAction<iUSerResponse | null>>
    userRegister: (
       formData: iRegisterFormValues,
       setLoading: React.Dispatch<React.SetStateAction<boolean>>
    ) => void
-   loading: boolean
-   setLoading: React.Dispatch<React.SetStateAction<boolean>>
-   userLogin: (data: iLoginFormValues) => void
 }
 
 export const UserContext = createContext({} as iUserContext)
 
 export const UserProvider = ({ children }: iProviderProps) => {
-   const [loading, setLoading] = useState(false)
-
-   const [user, setUser] = useState<iUSerResponse | null>(null)
-
    const navigate = useNavigate()
+   const [loading, setLoading] = useState(false)
+   const [user, setUser] = useState<iUSerResponse | null>(null)
 
    const userLogin = async (data: iLoginFormValues) => {
       try {
@@ -71,7 +69,6 @@ export const UserProvider = ({ children }: iProviderProps) => {
          }, 4000)
       } catch (error) {
          const currentError = error as AxiosError<iRequestError>
-         console.log(error)
          toast.error(currentError.message)
       } finally {
          setLoading(false)
