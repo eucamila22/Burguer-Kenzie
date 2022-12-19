@@ -24,7 +24,7 @@ const Card = ({ elem }: iElemProps) => {
             <div className='description'>
                <p className='heading3 name'>{elem.name}</p>
                <small className='caption category'>{elem.category}</small>
-               <p className='price body'>R$ {elem.price.toLocaleString("pt-BR", {
+               <p className='price body'>{elem.price.toLocaleString("pt-BR", {
               style: "currency",
               currency: "BRL",
             })}</p>
