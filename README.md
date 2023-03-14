@@ -6,5 +6,5 @@
 <p>No carrinho, é possível remover itens, atualizando o valor total da compra.</p>
 <p>A aplicação tem conceito Mobile-First, se adaptando a diferentes tamanhos de telas.</p>
 
-https://react-entrega-template-hamburgueria-da-kenzie-2-0-eucamila22.vercel.app/
+https://burguer-kenzie-indol.vercel.app/
 
